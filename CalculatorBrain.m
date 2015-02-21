@@ -57,7 +57,25 @@
         double divisor = [self popOperand];
         if (divisor) result = [self popOperand] / divisor;
     }
-    
+    else if ([operation isEqualToString:@"sin"])
+    {
+        double sinop = [self popOperand];
+        result = sin(sinop);
+    }
+    else if ([operation isEqualToString:@"cos" ])
+    {
+        double cosop = [self popOperand];
+        result = cos(cosop);
+    }
+    else if ([operation isEqualToString:@"sqrt"])
+    {
+        double rt = [self popOperand];
+        result = sqrt(rt);
+    }
+    else if ([operation isEqualToString:@"π"])
+    {
+        result = M_PI * [self popOperand];
+    }
     [self pushOperand:result];
     
     return result;

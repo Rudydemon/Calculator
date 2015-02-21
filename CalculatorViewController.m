@@ -17,6 +17,7 @@
 
 @implementation CalculatorViewController
 
+@synthesize whole_display;
 @synthesize display;
 @synthesize userIsInTheMiddleOfEnteringANumber;
 @synthesize brain = _brain;
@@ -41,6 +42,21 @@
     }
 
 }
+- (IBAction)decimalPressed:(UIButton *)sender
+{
+    NSString *decimal = [sender currentTitle];
+    
+    if (self.userIsInTheMiddleOfEnteringANumber)
+    {
+        self.display.text = [self.display.text stringByAppendingString:decimal];
+    }
+    else
+    {
+        self.display.text = decimal;
+        self.userIsInTheMiddleOfEnteringANumber = YES;
+    }
+}
+
 - (IBAction)enterPressed
 {
     [self.brain pushOperand:[self.display.text doubleValue]];
@@ -56,5 +72,6 @@
     double result = [self.brain performOperation:operation];
     self.display.text = [NSString stringWithFormat:@"%g", result];
 }
+
 
 @end
