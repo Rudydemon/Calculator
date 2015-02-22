@@ -40,6 +40,16 @@
         self.display.text = digit;
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
+    
+    if (self.userIsInTheMiddleOfEnteringANumber)
+    {
+        self.whole_display.text = [self.whole_display.text stringByAppendingString:digit];
+    }
+    else
+    {
+        self.whole_display.text = digit;
+        self.userIsInTheMiddleOfEnteringANumber = YES;
+    }
 
 }
 - (IBAction)decimalPressed:(UIButton *)sender
@@ -53,6 +63,16 @@
     else
     {
         self.display.text = decimal;
+        self.userIsInTheMiddleOfEnteringANumber = YES;
+    }
+    
+    if (self.userIsInTheMiddleOfEnteringANumber)
+    {
+        self.whole_display.text = [self.whole_display.text stringByAppendingString:decimal];
+    }
+    else
+    {
+        self.whole_display.text = decimal;
         self.userIsInTheMiddleOfEnteringANumber = YES;
     }
 }
@@ -71,6 +91,7 @@
     NSString *operation = [sender currentTitle];
     double result = [self.brain performOperation:operation];
     self.display.text = [NSString stringWithFormat:@"%g", result];
+    self.whole_display.text = [self.whole_display.text stringByAppendingString:operation];
 }
 
 
