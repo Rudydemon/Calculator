@@ -105,7 +105,10 @@
 
 - (IBAction)delPressed:(UIButton *)sender
 {
-    
+    self.display.text = [self.display.text stringByDeletingLastPathComponent];
+    NSString *disp = self.whole_display.text;
+    self.whole_display.text = [self.display.text stringByDeletingLastPathComponent];
+    self.whole_display.text = [self.display.text stringByAppendingPathComponent:disp];
 }
 
 - (IBAction)clearPressed
