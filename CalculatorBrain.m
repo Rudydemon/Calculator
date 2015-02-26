@@ -81,6 +81,10 @@
     {
         result = M_PI * [self popOperand];
     }
+    else if ([operation isEqualToString:@"+/-"])
+    {
+        result = -1 * [self popOperand];
+    }
     [self pushOperand:result];
     
     return result;

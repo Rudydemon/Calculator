@@ -56,6 +56,7 @@
 {
     NSString *decimal = [sender currentTitle];
     
+    
     if (self.userIsInTheMiddleOfEnteringANumber)
     {
         self.display.text = [self.display.text stringByAppendingString:decimal];
@@ -69,6 +70,7 @@
     if (self.userIsInTheMiddleOfEnteringANumber)
     {
         self.whole_display.text = [self.whole_display.text stringByAppendingString:decimal];
+        
     }
     else
     {
@@ -80,7 +82,10 @@
 - (IBAction)enterPressed
 {
     [self.brain pushOperand:[self.display.text doubleValue]];
+    NSString *space = [NSString stringWithFormat:@" "];
+    self.whole_display.text = [self.whole_display.text stringByAppendingString:space];
     self.userIsInTheMiddleOfEnteringANumber = NO;
+    
 }
 
 - (IBAction)operationPressed:(id)sender
@@ -90,13 +95,17 @@
     }
     NSString *operation = [sender currentTitle];
     double result = [self.brain performOperation:operation];
+    NSString *resdis = [NSString stringWithFormat:@"%g", result ];
     self.display.text = [NSString stringWithFormat:@"%g", result];
     self.whole_display.text = [self.whole_display.text stringByAppendingString:operation];
+    self.whole_display.text = [self.whole_display.text stringByAppendingString:@"="];
+    self.whole_display.text = [self.whole_display.text stringByAppendingString:resdis];
+  
 }
 
 - (IBAction)delPressed:(UIButton *)sender
 {
-
+    
 }
 
 - (IBAction)clearPressed
