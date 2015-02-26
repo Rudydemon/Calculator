@@ -94,5 +94,15 @@
     self.whole_display.text = [self.whole_display.text stringByAppendingString:operation];
 }
 
+- (IBAction)delPressed:(UIButton *)sender
+{
+
+}
+
+- (IBAction)clearPressed
+{
+    display.text = @"";
+    whole_display.text = @"";
+}
 
 @end
